@@ -9,9 +9,15 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 
+
 # Local configuration imports
 from config import OPENAI_API_KEY, GOOGLE_API_KEY
 
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)
 
 # Defines the scope for Gmail and the endpoint URL for OpenAI's API
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
@@ -110,3 +116,25 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+@app.route('/process_emails', methods=['POST'])
+def process_emails():
+    data = request.json
+    token = data['token']
+
+    # Use this token to authenticate Gmail
+    creds = Credentials.from_authorized_user(token)
+    service = build('gmail', 'v1', credentials=creds)
+
+    email_contents = fetch_latest_emails(service)
+
+    results = []
+    for email_content in email_contents:
+        result = ask_gpt4(f"Is this email a job application rejection, acceptance, follow-up, or irrelevant? {email_content}")
+        results.append(result)
+
+    return jsonify(results)
+
+if __name__ == "__main__":
+    app.run(debug=True)

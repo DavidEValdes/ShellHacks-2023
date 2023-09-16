@@ -10,7 +10,7 @@ from config import OPENAI_API_KEY, GOOGLE_API_KEY
 
 
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
-ENDPOINT_URL = "https://api.openai.com/v1/engines/davinci-codex/completions"
+ENDPOINT_URL = "https://api.openai.com/v1/chat/completions"
 
 
 
@@ -44,12 +44,26 @@ def ask_gpt4(question):
         'User-Agent': 'OpenAI-GPT-4-Client'
     }
     data = {
-        "prompt": question,
+        "model": "gpt-4", 
+        "messages": [{
+            "role": "system",
+            "content": "You are a helpful assistant."
+        }, {
+            "role": "user",
+            "content": question
+        }],
         "max_tokens": 150
     }
     response = requests.post(ENDPOINT_URL, headers=headers, data=json.dumps(data))
+    response_data = response.json()
+    
     if response.status_code == 200:
-        return response.json()['choices'][0]['text'].strip()
+        # Check if 'choices' and 'message' are in the response
+        if 'choices' in response_data and len(response_data['choices']) > 0 and 'message' in response_data['choices'][0] and 'content' in response_data['choices'][0]['message']:
+            return response_data['choices'][0]['message']['content'].strip()
+        else:
+            print(f"Unexpected response structure: {response_data}")
+            return None
     else:
         print(f"Error {response.status_code}: {response.text}")
         return None

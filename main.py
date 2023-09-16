@@ -33,7 +33,12 @@ def get_gmail_service():
 
     # Check if we already have stored credentials
     if os.path.exists('token.json'):
-        creds = Credentials.from_authorized_user_file('token.json')
+        try:
+            creds = Credentials.from_authorized_user_file('token.json')
+        except ValueError as e:
+            print("Error reading token.json:", e)
+            os.remove('token.json')  # Remove the faulty token file
+            creds = None
 
     # If no (valid) credentials are available, let the user log in    
     if not creds or not creds.valid:
@@ -41,7 +46,7 @@ def get_gmail_service():
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
-            creds = flow.run_local_server(port=8080)
+            creds = flow.run_local_server(port=8080, prompt='consent')  # Force a prompt
 
             # Save the credentials for the next run
             with open('token.json', 'w') as token:
@@ -72,7 +77,7 @@ def ask_gpt4(question):
         "model": "gpt-4", 
         "messages": [{
             "role": "system",
-            "content": "You are a helpful assistant."
+            "content": "You are a helpful assistant that answers questions with either irrelevant, acceptance, rejection, follow up."
         }, {
             "role": "user",
             "content": question

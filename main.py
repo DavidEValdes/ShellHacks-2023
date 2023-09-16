@@ -65,6 +65,20 @@ def fetch_latest_emails(service, max_emails=10):
 
 
 
+def categorize_response(response_text):
+    """
+    Interpret the response from GPT-4 and categorize it into a single word.
+    """
+    if "rejection" in response_text.lower():
+        return "rejection"
+    elif "acceptance" in response_text.lower():
+        return "acceptance"
+    elif "follow-up" in response_text.lower():
+        return "follow-up"
+    else:
+        return "irrelevant"
+
+
 
 # Ask GPT-4 a question and retrieve the answer
 def ask_gpt4(question):
@@ -77,7 +91,9 @@ def ask_gpt4(question):
         "model": "gpt-4", 
         "messages": [{
             "role": "system",
-            "content": "You are a helpful assistant that answers questions with either irrelevant, acceptance, rejection, follow up."
+            "content": ("You are a helpful assistant tasked with classifying emails to determine if they are related to a current internship application. Only choose anything but irrelevant only if you can contextualize that the email is regarding a current internship status "
+                        "Based on the email content provided, categorize it precisely as either: "
+                        "'irrelevant', 'acceptance', 'rejection', or 'follow-up'. , If the email has nothing to do with a current internship application what so ever, and doesnt fit the categories, return irrelevant ")
         }, {
             "role": "user",
             "content": question
@@ -89,12 +105,13 @@ def ask_gpt4(question):
     response = requests.post(ENDPOINT_URL, headers=headers, data=json.dumps(data))
     response_data = response.json()
     
-    # Check for valid response and extract the model's message content
+    # Extract the model's message content
     if response.status_code == 200:
         if ('choices' in response_data and len(response_data['choices']) > 0 
             and 'message' in response_data['choices'][0] 
             and 'content' in response_data['choices'][0]['message']):
-            return response_data['choices'][0]['message']['content'].strip()
+            detailed_response = response_data['choices'][0]['message']['content'].strip()
+            return categorize_response(detailed_response)
         else:
             print(f"Unexpected response structure: {response_data}")
             return None

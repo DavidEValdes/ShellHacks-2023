@@ -129,13 +129,25 @@ def process_emails():
     email_contents = fetch_latest_emails(service)
 
     results = []
+    relevant_count = 0
+    irrelevant_count = 0
+    
     for email_content in email_contents:
         result = ask_gpt4(f"Is this email a job application rejection, acceptance, follow-up, or irrelevant? {email_content}")
         results.append(result)
+
+        # Update relevant and irrelevant counters based on the result
+        if result in ["acceptance", "rejection", "follow-up"]:
+            relevant_count += 1
+        elif result == "irrelevant":
+            irrelevant_count += 1
+
     try:
-        return jsonify(results)
+        # Return both the categorization results and the counts
+        return jsonify({
+            "categorized_results": results,
+            "relevant_count": relevant_count,
+            "irrelevant_count": irrelevant_count
+        })
     except RuntimeError:
         return None
-
-if __name__ == "__main__":
-    app.run(debug=True)

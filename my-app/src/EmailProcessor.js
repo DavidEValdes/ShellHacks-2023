@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function EmailProcessor() {
+function EmailProcessor(props) {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -14,8 +14,16 @@ function EmailProcessor() {
                 return response.json();
             })
             .then(data => {
-                setData(data);
+                setData(data); // Directly setting the received data
                 setLoading(false);
+                
+                // Calculate the counts of 'relevant' and 'irrelevant'
+                const relevantCount = data.filter(item => item === 'relevant').length;
+                const irrelevantCount = data.filter(item => item === 'irrelevant').length;
+
+                // Update the parent component with these counts
+                props.updateCounts(relevantCount, irrelevantCount);
+
             })
             .catch(error => {
                 setError(error);

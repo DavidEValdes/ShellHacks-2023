@@ -1,38 +1,298 @@
-.App {
+/* App.css */
+
+.app {
+  display: flex;
+  flex-direction: column; /* Align elements vertically */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333; /* Set your desired text color */
+  background-color: #ffffff; /* Set background color for shading */
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-bottom: 20px; /* Add some space between title and textbox */
+  font-family: 'Futura', sans-serif;
+}
+
+
+.textbox {
+  position: relative;
+  width: 70vw;
+  height: 70vh;
+  background-color: #7d7f81; /* Light gray background color */
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #a1a8b3; /* GitHub gray border color */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.button-container {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 100%;
+}
+
+
+
+.button-prev,
+.button-next {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  margin: 0; /* Remove individual margin */
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.button-prev:hover,
+.button-next:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.pill {
+  --sl-input-height-medium: 48px;
+  --sl-input-border-width: 4px;
+  border-radius: 50px;
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.pill:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+
+
+.pill:hover {
+  transform: scale(1.05) rotate(-1deg);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.sl-button.pill:active {
+  transform: translateY(1px); /* Add a slight downward movement on click */
+  box-shadow: none; /* Remove box shadow on click */
+}
+
+.pill:focus-visible {
+  outline: dashed 2px rgb(98, 85, 214);
+  outline-offset: 4px;
+}
+
+.styled-textbox {
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+  padding: 10px;
+  border: 1px solid #bfc0c2;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  background-color: #bfc0c2;
+}
+
+.placeholder {
+  color: #007bff;
+  font-size: 16px;
+}
+
+.entered-text {
+  font-size: 24px;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.email-body {
+  font-family: Arial, sans-serif;
+  line-height: 2;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.entered-text {
+  font-size: 16px;
+  text-align: left;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.email-body p {
+  margin: 0 0 10px;
+}
+
+.email-body h1,
+.email-body h2,
+.email-body h3,
+.email-body h4,
+.email-body h5,
+.email-body h6 {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.email-body blockquote {
+  border-left: 2px solid #007bff;
+  margin: 0;
+  padding-left: 10px;
+  color: #555;
+}
+
+.email-body a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.email-body a:hover {
+  text-decoration: underline;
+}
+
+.email-body ul,
+.email-body ol {
+  margin-bottom: 10px;
+}
+
+.email-body ul li,
+.email-body ol li {
+  margin-left: 20px;
+}
+
+.email-body ul li::before {
+  content: "•";
+  margin-right: 5px;
+  color: #007bff;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 250px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.drawer-toggle {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+
+.drawer.open {
+  transform: translateX(0);
+}
+
+.drawer-toggle {
+  font-size: 16px;
+  padding: 5px 10px;
+}
+
+
+
+
+.centered-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.drawer-toggle:hover {
+  transform: scale(1.05) rotate(-1deg);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.drawer-toggle:focus {
+  outline: none;
+}
+
+.drawer-toggle:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.sl-button.drawer-toggle:focus-visible {
+  outline: dashed 2px rgb(98, 85, 214);
+  outline-offset: 4px;
+}
+
+
+.drawer-toggle.close {
+  font-size: 16px;
+  padding: 5px 10px;
+}
+
+.drawer-content {
+  padding: 20px;
+  text-align: center;
+  margin-top: 50px; /* Add margin to avoid overlap with the toggle button */
+}
+
+.status-box {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100px;
+  background-color: #a1a8b3;
+  border-radius: 10px;
+  padding: 10px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.status-item {
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.accepted {
+  color: green;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.rejected {
+  color: red;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
+/* Add any other styles you need for the drawer */

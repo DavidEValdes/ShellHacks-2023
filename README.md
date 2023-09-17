@@ -1,4 +1,6 @@
 <img width="904" alt="Screenshot 2023-09-17 at 10 25 51 AM" src="https://github.com/DavidEValdes/ShellHacks-2023/assets/36570117/3d424de5-be3a-41d3-8517-a65e2ecb06fb">
+
+
 ## Inspiration
 
 While traveling to ShellHacks, a conversation I had with my carpool buddies became the spark for this idea. We discussed the numerous internship applications I had submitted and the method I employed to streamline the process using Notion. Amid this conversation, an epiphany struck — I realized that I could leverage my prior experience with the OpenAI API to make this internship tracking endeavor even more efficient.

@@ -340,7 +340,6 @@
   top: 100%;               /* Position it just outside the .item-box, at its bottom edge */
   left: 50%;               /* 50% from the left, which puts the left edge at the center */
   transform: translateX(-50%); /* Shifts it back by half its width to truly center it */
-  margin-top: 20px;        /* Provide space between the .item-box and .fun-fact. Adjust as needed */
   background-color: #e5e5e5; /* A light grey background, adjust as desired */
   padding: 10px 20px;      /* Some padding for breathing room */
   border-radius: 10px;     /* Rounded corners */
@@ -349,5 +348,3 @@
   font-size: 20px;         /* Font size adjustment */
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
 }
-
-/* Add any other styles you need for the drawer */

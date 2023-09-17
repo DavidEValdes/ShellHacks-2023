@@ -124,31 +124,6 @@ def ask_gpt4(question):
 
 
 
-# Main function to retrieve emails and ask GPT-4 for analysis
-def main():
-
-    # Get Gmail API service
-    service = get_gmail_service()
-
-    # Fetch latest emails
-    email_contents = fetch_latest_emails(service)
-
-    # Ask GPT-4 for email categorization and print results
-    for email_content in email_contents:
-        result = ask_gpt4(f"Is this email a job application rejection, acceptance, follow-up, or irrelevant? {email_content}")
-        print(result)
-
-# if __name__ == "__main__":
-#     main()
-
-
-
-@app.route('/')
-def index():
-    main()
-
-
-
 
 @app.route('/process_emails', methods=['GET'])
 def process_emails():
@@ -160,7 +135,6 @@ def process_emails():
     results = []
     for email_content in email_contents:
         result = ask_gpt4(f"Is this email a job application rejection, acceptance, follow-up, or irrelevant? {email_content}")
-        print(result)
         results.append(result)
     try:
         return jsonify(results)

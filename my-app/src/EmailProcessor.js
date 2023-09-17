@@ -34,7 +34,7 @@ function EmailProcessor() {
     return (
         <div>
             {/* Render your data here. The structure depends on the response shape. */}
-            <pre>{JSON.stringify(data, null, 2)}</pre>
+            <pre>{JSON.stringify(data, null)}</pre>
         </div>
     );
 }

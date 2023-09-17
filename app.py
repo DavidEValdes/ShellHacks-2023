@@ -91,7 +91,7 @@ def ask_gpt4(question):
             "role": "system",
             "content": ("You are a helpful assistant tasked with classifying emails to determine if they are related to a current internship application. Only choose anything but irrelevant only if you can contextualize that the email is regarding a current internship status "
                         "Based on the email content provided, categorize it precisely as either: "
-                        "'irrelevant', 'acceptance', 'rejection', or 'follow-up'. , If the email has nothing to do with a current internship application what so ever, and doesnt fit the categories, return irrelevant ")
+                        "'irrelevant', 'acceptance', 'rejection',' relevant', or 'follow-up'. , If the email has nothing to do with a current internship application what so ever, and doesnt fit the categories, return irrelevant ")
         }, {
             "role": "user",
             "content": question
@@ -111,7 +111,7 @@ def ask_gpt4(question):
             detailed_response = response_data['choices'][0]['message']['content'].strip().lower()
             
             # Directly return the response
-            if detailed_response in ["rejection", "acceptance", "follow-up", "irrelevant"]:
+            if detailed_response in ["rejection", "acceptance", "follow-up", "relevant"]:
                 return detailed_response
             else:
                 return "irrelevant"  # Default to irrelevant if not any of the above

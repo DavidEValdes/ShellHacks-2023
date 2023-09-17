@@ -89,9 +89,9 @@ def ask_gpt4(question):
         "model": "gpt-4", 
         "messages": [{
             "role": "system",
-            "content": ("You are a helpful assistant tasked with classifying emails to determine if they are related to a current internship application. Only choose anything but irrelevant only if you can contextualize that the email is regarding a current internship status "
+            "content": ("You are a helpful assistant tasked with classifying emails to determine if they are related to a current internship application. "
                         "Based on the email content provided, categorize it precisely as either: "
-                        "'irrelevant', 'acceptance', 'rejection',' relevant', or 'follow-up'. , If the email has nothing to do with a current internship application what so ever, and doesnt fit the categories, return irrelevant ")
+                        "'irrelevant' or ' relevant'. , If the email has nothing to do with a current internship application what so ever, and doesnt fit the categories, return irrelevant ")
         }, {
             "role": "user",
             "content": question
@@ -138,11 +138,11 @@ def process_emails():
     irrelevant_count = 0
     
     for email_content in email_contents:
-        result = ask_gpt4(f"Is this email a job application rejection, acceptance, follow-up, or irrelevant? {email_content}")
+        result = ask_gpt4(f"Is this email relevant or irrelevant to a current job or internship search. Contextualize and come up with an accurate answer. Please answer only relevant or irrelevant {email_content}")
         results.append(result)
 
         # Update relevant and irrelevant counters based on the result
-        if result in ["acceptance", "rejection", "follow-up"]:
+        if result in ["relevant"]:
             relevant_count += 1
         elif result == "irrelevant":
             irrelevant_count += 1

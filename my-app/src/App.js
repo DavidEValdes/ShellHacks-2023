@@ -30,35 +30,11 @@ function App({ x, y, z }) {
     <div className="app">
       <div className="title">InternTrack</div>
       <div className="status-box">
-        <div className="status-item accepted" style={{ color: 'green' }}>Offer: {x}</div>
-        <div className="status-item rejected" style={{ color: 'red' }}>Rejected: {y}</div>
-        <div className="status-item">Interview/OA: {z}</div>
+        <div className="status-item accepted" style={{ color: 'green' }}>Relevant: {x}</div>
+        <div className="status-item rejected" style={{ color: 'red' }}>Irrelevant: {y}</div>
       </div>
       <h1>Email Processing Result</h1>
       <EmailProcessor />
-      <div className="textbox">
-        <div className="button-container">
-          <button className="pill" onClick={handlePrevClick}>&#8592; Previous</button>
-          <button className="pill" onClick={handleNextClick}>Next &#8594;</button>
-        </div>
-        <div className="styled-textbox">
-          <div className="entered-text">
-            <div className="email-body">
-              {carouselContent[currentIndex]}
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className={`drawer ${isDrawerOpen ? 'open' : ''}`}>
-        <div className="drawer-toggle" onClick={toggleDrawer}>
-          {isDrawerOpen ? <span>&#10005; Close</span> : <span>&#9776; Click to Learn!</span>}
-        </div>
-        <div className="drawer-content">
-          <div className="centered-text">
-            Fun fact! The average adult spends 30 minutes mindlessly scrolling through their inbox every day just to stay updated.
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

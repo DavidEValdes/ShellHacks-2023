@@ -1,312 +1,66 @@
-/* App.css */
-
 .app {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;  /* Align items to the start (top for column direction) */
-  position: relative;  /* To allow absolute positioning of children if needed */
-  height: 100vh;  /* Take up the full viewport height */
-  padding-top: 70px; /* Or adjust as needed to give space from the top of the viewport */
+  justify-content: flex-start;
+  position: relative;
+  height: 100vh;
+  padding-top: 70px;
 }
 
+
 .sub-header-description {
-  font-size: 48px;             /* Adjust font size as per your need */
-  color: #000000;             /* Deep gray-blue color, feel free to change */
-  font-weight: 8000;           /* Medium-bold weight for emphasis */
-  margin: 20px 0;             /* Space above and below the sub-header */
-  text-align: center;         /* Center the text */
-  font-family: 'Futura', sans-serif; /* Keeping it consistent with your title font */
+  font-size: 48px;
+  color: #000000;
+  font-weight: 8000;
+  margin: 20px 0 60px; 
+  text-align: center;
+  font-family: 'Futura', sans-serif;
   opacity: 0.8;
-  margin-bottom: 60px;     
-  font-style: italic;           /* Slightly transparent for a softer appearance */
+  font-style: italic;
 }
+
 
 .title {
   font-size: 64px;
   font-weight: bold;
   color: #333;
   background-color: #ffffff;
-  padding: 20px 40px;            /* Increased padding for better visual balance */
-  border-radius: 15px;          /* Slightly larger radius for smoother edges */
-  margin-bottom: 120px;         /* Further increased margin for more spacing */
+  padding: 20px 40px;
+  border-radius: 15px;
+  margin-bottom: 120px;
   font-family: 'Futura', sans-serif;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Added a soft shadow for depth */
-  border: 2px solid rgba(0, 0, 0, 0.1);        /* A subtle border for definition */
-  letter-spacing: 1px;          /* Slight letter spacing for better legibility */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05); /* Slight text shadow for a more polished look */
-  transition: transform 0.2s;   /* Smooth transition effect for hover state */
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
 }
 
 
 .sub-header {
-  font-size: 32px; /* Adjust as necessary */
+  font-size: 32px;
   color: #444; 
   text-align: center;
-  margin-bottom: 30px; 
+  margin-bottom: 30px;
   font-family: 'Futura', sans-serif;
-  font-weight: 600; /* Slightly less bold than the main title */
+  font-weight: 600;
   padding: 0 20px;
 }
 
 
-.textbox {
-  position: relative;
-  width: 70vw;
-  height: 70vh;
-  background-color: #7d7f81; /* Light gray background color */
-  padding: 20px;
-  border-radius: 10px;
-  border: 1px solid #a1a8b3; /* GitHub gray border color */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.button-container {
-  position: absolute;
-  bottom: -60px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 100%;
-}
-
 .description {
-  font-size: 28px; /* Increased font size */
-  color: #666; 
-  max-width: 800px; 
-  margin: 0 auto 150px; /* Increased bottom margin */
-  text-align: center; 
-  line-height: 1.6; /* Slightly increased line-height */
-  font-family: 'Futura', sans-serif; 
-  padding: 0 20px; 
-  font-style: italic; /* Added italic styling */
-}
-
-.button-prev,
-.button-next {
-  background-color: #007bff;
-  border: none;
-  color: #fff;
-  padding: 10px 20px;
-  margin: 0; /* Remove individual margin */
-  cursor: pointer;
-  font-size: 18px;
-  border-radius: 5px;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.button-prev:hover,
-.button-next:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
-}
-
-.pill {
-  --sl-input-height-medium: 48px;
-  --sl-input-border-width: 4px;
-  border-radius: 50px;
-  background-color: #007bff;
-  border: none;
-  color: #fff;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 18px;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.pill:active {
-  transform: translateY(1px);
-  box-shadow: none;
-}
-
-
-
-.pill:hover {
-  transform: scale(1.05) rotate(-1deg);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-}
-
-.sl-button.pill:active {
-  transform: translateY(1px); /* Add a slight downward movement on click */
-  box-shadow: none; /* Remove box shadow on click */
-}
-
-.pill:focus-visible {
-  outline: dashed 2px rgb(98, 85, 214);
-  outline-offset: 4px;
-}
-
-.styled-textbox {
-  width: 100%;
-  height: 100%;
-  font-size: 20px;
-  padding: 10px;
-  border: 1px solid #bfc0c2;
-  border-radius: 5px;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-  background-color: #bfc0c2;
-}
-
-.placeholder {
-  color: #007bff;
-  font-size: 16px;
-}
-
-.entered-text {
-  font-size: 24px;
+  font-size: 28px;
+  color: #666;
+  max-width: 800px;
+  margin: 0 auto 150px;
   text-align: center;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  line-height: 1.6;
+  font-family: 'Futura', sans-serif;
+  padding: 0 20px;
+  font-style: italic;
 }
 
-.email-body {
-  font-family: Arial, sans-serif;
-  line-height: 2;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.entered-text {
-  font-size: 16px;
-  text-align: left;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.email-body p {
-  margin: 0 0 10px;
-}
-
-.email-body h1,
-.email-body h2,
-.email-body h3,
-.email-body h4,
-.email-body h5,
-.email-body h6 {
-  font-weight: bold;
-  margin: 10px 0;
-}
-
-.email-body blockquote {
-  border-left: 2px solid #007bff;
-  margin: 0;
-  padding-left: 10px;
-  color: #555;
-}
-
-.email-body a {
-  color: #007bff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.email-body a:hover {
-  text-decoration: underline;
-}
-
-.email-body ul,
-.email-body ol {
-  margin-bottom: 10px;
-}
-
-.email-body ul li,
-.email-body ol li {
-  margin-left: 20px;
-}
-
-.email-body ul li::before {
-  content: "•";
-  margin-right: 5px;
-  color: #007bff;
-}
-
-.drawer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 250px;
-  background-color: #f9f9f9;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  overflow-y: auto;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease-in-out;
-}
-
-.drawer-toggle {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: #007bff;
-  border: none;
-  color: #fff;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 18px;
-  border-radius: 5px;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-
-.drawer.open {
-  transform: translateX(0);
-}
-
-.drawer-toggle {
-  font-size: 16px;
-  padding: 5px 10px;
-}
-
-
-
-
-.centered-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.drawer-toggle:hover {
-  transform: scale(1.05) rotate(-1deg);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-}
-
-.drawer-toggle:focus {
-  outline: none;
-}
-
-.drawer-toggle:active {
-  transform: translateY(1px);
-  box-shadow: none;
-}
-
-.sl-button.drawer-toggle:focus-visible {
-  outline: dashed 2px rgb(98, 85, 214);
-  outline-offset: 4px;
-}
-
-
-.drawer-toggle.close {
-  font-size: 16px;
-  padding: 5px 10px;
-}
-
-.drawer-content {
-  padding: 20px;
-  text-align: center;
-  margin-top: 50px; /* Add margin to avoid overlap with the toggle button */
-}
 
 .status-box {
   width: 200px;
@@ -317,34 +71,37 @@
   margin-top: 150px;
 }
 
+
 .status-item {
   font-size: 20px;
-  font-weight: 600; /* Bold weight */
+  font-weight: 600;
   margin-bottom: 20px;
-  padding: 8px 50px 8px 16px; /* Adjusted padding */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-
+  padding: 8px 50px 8px 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 
 .accepted {
   color: green;
 }
 
+
 .rejected {
   color: red;
 }
 
+
 .fun-fact {
-  position: absolute;      /* Position it relative to the nearest positioned ancestor */
-  top: 100%;               /* Position it just outside the .item-box, at its bottom edge */
-  left: 50%;               /* 50% from the left, which puts the left edge at the center */
-  transform: translateX(-50%); /* Shifts it back by half its width to truly center it */
-  background-color: #e5e5e5; /* A light grey background, adjust as desired */
-  padding: 10px 20px;      /* Some padding for breathing room */
-  border-radius: 10px;     /* Rounded corners */
-  font-style: italic;      /* Italic text for a fun style */
-  font-family: 'Futura', sans-serif; /* Consistent font family */
-  font-size: 20px;         /* Font size adjustment */
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #e5e5e5;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-style: italic;
+  font-family: 'Futura', sans-serif;
+  font-size: 20px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }

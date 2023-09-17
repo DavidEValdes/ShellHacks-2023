@@ -108,14 +108,19 @@ def ask_gpt4(question):
         if ('choices' in response_data and len(response_data['choices']) > 0 
             and 'message' in response_data['choices'][0] 
             and 'content' in response_data['choices'][0]['message']):
-            detailed_response = response_data['choices'][0]['message']['content'].strip()
-            return categorize_response(detailed_response)
+            detailed_response = response_data['choices'][0]['message']['content'].strip().lower()
+            
+            # Directly return the response
+            if detailed_response in ["rejection", "acceptance", "follow-up", "irrelevant"]:
+                return detailed_response
+            else:
+                return "irrelevant"  # Default to irrelevant if not any of the above
         else:
             print(f"Unexpected response structure: {response_data}")
-            return None
+            return "irrelevant"  # Default to irrelevant for any other cases
     else:
         print(f"Error {response.status_code}: {response.text}")
-        return None
+        return "irrelevant"  # Default to irrelevant for errors
     
 
 

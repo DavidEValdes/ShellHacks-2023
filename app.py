@@ -71,12 +71,8 @@ def categorize_response(response_text):
     """
     Interpret the response from GPT-4 and categorize it into a single word.
     """
-    if "rejection" in response_text.lower():
-        return "rejection"
-    elif "acceptance" in response_text.lower():
-        return "acceptance"
-    elif "follow-up" in response_text.lower():
-        return "follow-up"
+    if any(keyword in response_text.lower() for keyword in ["rejection", "acceptance", "follow-up"]):
+        return "relevant"
     else:
         return "irrelevant"
 

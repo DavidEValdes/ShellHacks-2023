@@ -18,8 +18,8 @@ function EmailProcessor(props) {
                 setLoading(false);
                 
                 // Calculate the counts of 'relevant' and 'irrelevant'
-                const relevantCount = data.filter(item => item === 'relevant').length;
-                const irrelevantCount = data.filter(item => item === 'irrelevant').length;
+                const relevantCount = data.categorized_results.filter(item => item === 'relevant').length;
+                const irrelevantCount = data.categorized_results.filter(item => item === 'irrelevant').length;
 
                 // Update the parent component with these counts
                 props.updateCounts(relevantCount, irrelevantCount);
@@ -39,10 +39,12 @@ function EmailProcessor(props) {
         return <div>Error: {error.message}</div>;
     }
 
+    const filteredResults = data.categorized_results.filter(item => ['irrelevant', 'relevant'].includes(item));
+
     return (
         <div>
-            {/* Render your data here. The structure depends on the response shape. */}
-            <pre>{JSON.stringify(data, null)}</pre>
+            {/* Render your filtered data here */}
+            <pre>{JSON.stringify(filteredResults, null)}</pre>
         </div>
     );
 }

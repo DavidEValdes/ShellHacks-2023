@@ -25,10 +25,7 @@ ENDPOINT_URL = "https://api.openai.com/v1/chat/completions"
 
 
 
-
-# Obtain Gmail API service with user authorization
-def get_gmail_service():
-    
+def get_gmail_creds():
     creds = None
 
     # Check if we already have stored credentials
@@ -51,6 +48,11 @@ def get_gmail_service():
             # Save the credentials for the next run
             with open('token.json', 'w') as token:
                 token.write(creds.to_json())
+    return creds
+# Obtain Gmail API service with user authorization
+def get_gmail_service():
+    
+    creds = get_gmail_creds()
 
     return build('gmail', 'v1', credentials=creds)
 
@@ -136,19 +138,21 @@ def main():
         result = ask_gpt4(f"Is this email a job application rejection, acceptance, follow-up, or irrelevant? {email_content}")
         print(result)
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
+#     main()
+
+
+
+@app.route('/')
+def index():
     main()
 
 
 
 
-@app.route('/process_emails', methods=['POST'])
+@app.route('/process_emails', methods=['GET'])
 def process_emails():
-    data = request.json
-    token = data['token']
-
-    # Use this token to authenticate Gmail
-    creds = Credentials.from_authorized_user(token)
+    creds = get_gmail_creds()
     service = build('gmail', 'v1', credentials=creds)
 
     email_contents = fetch_latest_emails(service)
@@ -156,9 +160,12 @@ def process_emails():
     results = []
     for email_content in email_contents:
         result = ask_gpt4(f"Is this email a job application rejection, acceptance, follow-up, or irrelevant? {email_content}")
+        print(result)
         results.append(result)
-
-    return jsonify(results)
+    try:
+        return jsonify(results)
+    except RuntimeError:
+        return None
 
 if __name__ == "__main__":
     app.run(debug=True)

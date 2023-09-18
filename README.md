@@ -3,7 +3,7 @@
 
 
 
-[David Valdes's Project](https://github.com/DavidEValdes/ShellHacks-2023)
+[David Valdes's project on DevPost](https://devpost.com/software/interntrack?ref_content=user-portfolio&ref_feature=in_progress)
 
 ## Inspiration
 

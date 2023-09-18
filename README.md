@@ -1,8 +1,9 @@
 
 <img width="853" alt="Screenshot 2023-09-17 at 3 24 45 PM" src="https://github.com/DavidEValdes/ShellHacks-2023/assets/36570117/d9a30a4f-fcc0-4771-815a-f2d26b9b7505">
 
-https://devpost.com/software/interntrack?ref_content=user-portfolio&ref_feature=in_progress
 
+
+[David Valdes's Project](https://github.com/yourusername/yourrepositoryname)
 
 ## Inspiration
 

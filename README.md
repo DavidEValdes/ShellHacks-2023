@@ -3,7 +3,7 @@
 
 
 
-[David Valdes's project on DevPost](https://devpost.com/software/interntrack?ref_content=user-portfolio&ref_feature=in_progress)
+[David Valdes's DevPost](https://devpost.com/software/interntrack?ref_content=user-portfolio&ref_feature=in_progress)
 
 ## Inspiration
 
